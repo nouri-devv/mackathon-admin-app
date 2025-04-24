@@ -1,6 +1,6 @@
 'use client'
 
-import TimeDisplay from '@/components/TimeDisplay';
+import TimeDisplay from "@/component/TimeDisplay";
 
 export default function Home() {
   return (
