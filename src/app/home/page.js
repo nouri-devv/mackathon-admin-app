@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import StaffSidebarLayout from "src/component/StaffSidebarLayout";
+import StaffSidebarLayout from "@/components/StaffSidebarLayout";
 
 export default function StaffHome() {
   const [currentTime, setCurrentTime] = useState(new Date());

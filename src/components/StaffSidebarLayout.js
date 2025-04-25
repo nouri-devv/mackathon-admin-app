@@ -4,8 +4,8 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 const navItems = [
-  { label: "Home", href: "/staff/home", icon: "🏠" },
-  { label: "Events", href: "/staff/events", icon: "📋" },
+  { label: "Home", href: "/home", icon: "🏠" },
+  { label: "Events", href: "/home/events", icon: "📋" },
 ];
 
 export default function StaffSidebarLayout({ children }) {
