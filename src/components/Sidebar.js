@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { CalendarIcon, StarIcon, UserIcon, HomeIcon } from '@heroicons/react/24/outline';
 import { useAdmin } from '../hooks/useAdmin';
+import { TrophyIcon } from '@heroicons/react/24/solid';
 
 export default function Sidebar() {
   const { logout } = useAdmin();
@@ -24,6 +25,13 @@ export default function Sidebar() {
         >
           <CalendarIcon className="h-5 w-5 mr-3" />
           Events
+        </Link>
+        <Link 
+          href="/rewards"
+          className="flex items-center px-6 py-3 text-gray-700 hover:bg-indigo-50 hover:text-indigo-700"
+          >
+            <TrophyIcon className="h-5 w-5 mr-3" />
+            Rewards
         </Link>
       </nav>
       <div className="p-4 border-t">
