@@ -18,19 +18,6 @@ export default function Home() {
     {}
   );
 
-  // Calculate total points from registered events
-  const calculateTotalPoints = () => {
-    if (!events?.docs) return 0;
-    
-    return events.docs.reduce((total, doc) => {
-      const event = doc.data();
-      if (event.attendees?.includes(admin?.id)) {
-        return total + (event.creditPoints || 0);
-      }
-      return total;
-    }, 0);
-  };
-
   useEffect(() => {
     if (!loading && !admin) {
       router.push('/signup');
@@ -56,12 +43,6 @@ export default function Home() {
             <h1 className="text-3xl font-bold text-gray-900">
               Welcome, {admin?.firstName}!
             </h1>
-            <div className="flex items-center bg-indigo-50 px-4 py-2 rounded-full">
-              <StarIcon className="h-5 w-5 text-indigo-600 mr-2" />
-              <span className="text-indigo-600 font-medium">
-                {calculateTotalPoints()} Total Points
-              </span>
-            </div>
           </div>
 
           <div className="bg-white rounded-lg shadow-sm p-6 mb-8">
