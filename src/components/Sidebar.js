@@ -1,44 +1,55 @@
 import Link from 'next/link';
-import { CalendarIcon, StarIcon, UserIcon, HomeIcon } from '@heroicons/react/24/outline';
-import { useAdmin } from '../hooks/useAdmin';
+import { usePathname } from 'next/navigation';
+import { 
+  HomeIcon, 
+  CalendarIcon, 
+  GiftIcon,
+  UserIcon,
+  ArrowRightOnRectangleIcon // Add this for logout icon
+} from '@heroicons/react/24/outline';
 
 export default function Sidebar() {
-  const { logout } = useAdmin();
+  const pathname = usePathname();
+
+  const navigation = [
+    { name: 'Dashboard', href: '/', icon: HomeIcon },
+    { name: 'Events', href: '/events', icon: CalendarIcon },
+    { name: 'Rewards', href: '/rewards', icon: GiftIcon },
+  ];
 
   return (
-    <div className="w-64 bg-white shadow-lg h-screen flex flex-col">
+    <div className="w-64 bg-white border-r border-gray-200 hidden md:flex flex-col h-screen sticky top-0">
       <div className="p-6">
-        <h2 className="text-2xl font-bold text-gray-800">Admin Portal</h2>
+        <h2 className="text-2xl font-bold text-indigo-600">StudentApp</h2>
       </div>
-      <nav className="mt-2 flex-1">
-        <Link 
-          href="/"
-          className="flex items-center px-6 py-3 text-gray-700 hover:bg-indigo-50 hover:text-indigo-700"
-        >
-          <HomeIcon className="h-5 w-5 mr-3" />
-          Home
-        </Link>
-        <Link 
-          href="/events"
-          className="flex items-center px-6 py-3 text-gray-700 hover:bg-indigo-50 hover:text-indigo-700"
-        >
-          <CalendarIcon className="h-5 w-5 mr-3" />
-          Events
-        </Link>
-        <Link 
-          href="/rewards"
-          className="flex items-center px-6 py-3 text-gray-700 hover:bg-indigo-50 hover:text-indigo-700"
-          >
-            <StarIcon className="h-5 w-5 mr-3" />
-            Rewards
-        </Link>
+      <nav className="flex-1 px-4 space-y-1">
+        {navigation.map((item) => {
+          const isActive = pathname === item.href;
+          return (
+            <Link
+              key={item.name}
+              href={item.href}
+              className={`flex items-center px-4 py-3 text-sm font-medium rounded-lg ${
+                isActive
+                  ? 'bg-indigo-50 text-indigo-600'
+                  : 'text-gray-600 hover:bg-gray-50'
+              }`}
+            >
+              <item.icon className={`mr-3 h-5 w-5 ${
+                isActive ? 'text-indigo-600' : 'text-gray-400'
+              }`} />
+              {item.name}
+            </Link>
+          );
+        })}
       </nav>
-      <div className="p-4 border-t">
+      <div className="p-4 border-t border-gray-200">
         <button 
-          onClick={logout}
-          className="w-full px-4 py-2 bg-gray-100 text-gray-700 rounded-md hover:bg-gray-200 flex items-center justify-center"
+          onClick={() => signOut()}
+          className="flex items-center px-4 py-2 text-sm font-medium text-gray-600 hover:bg-gray-50 rounded-lg w-full"
         >
-          Logout
+          <ArrowRightOnRectangleIcon className="mr-3 h-5 w-5 text-gray-400" />
+          Sign Out
         </button>
       </div>
     </div>
