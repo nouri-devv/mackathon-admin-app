@@ -1,7 +1,6 @@
 import Link from 'next/link';
 import { CalendarIcon, StarIcon, UserIcon, HomeIcon } from '@heroicons/react/24/outline';
 import { useAdmin } from '../hooks/useAdmin';
-import { StarIcon } from '@heroicons/react/24/outline';
 
 export default function Sidebar() {
   const { logout } = useAdmin();
