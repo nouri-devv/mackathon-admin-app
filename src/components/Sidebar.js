@@ -20,7 +20,7 @@ export default function Sidebar() {
   return (
     <div className="w-64 bg-white border-r border-gray-200 hidden md:flex flex-col h-screen sticky top-0">
       <div className="p-6">
-        <h2 className="text-2xl font-bold text-indigo-600">StudentApp</h2>
+        <h2 className="text-2xl font-bold text-indigo-600">Admin Portal</h2>
       </div>
       <nav className="flex-1 px-4 space-y-1">
         {navigation.map((item) => {
